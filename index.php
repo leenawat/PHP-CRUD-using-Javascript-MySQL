@@ -13,7 +13,10 @@
     <table>
         <tr>
             <td>
-				<form id="frm"; onsubmit="event.preventDefault();onFormSubmit();" autocomplete="off" style="width: 200px;">
+				<form id="frm"; onsubmit="event.preventDefault();" autocomplete="off" style="width: 200px;">
+                <div>
+                        <input type="hidden" name="id" id="id" value="">
+                    </div>
                     <div>
                         <label>Full Name*</label><label class="validation-error hide" id="fullNameValidationError"> </label>
                         <input type="text" name="fullName" id="fullName">
@@ -39,6 +42,7 @@
                 <table class="list" id="employeeList">
                     <thead>
                         <tr>
+                            <th>#ID</th>
                             <th>Full Name</th>
                             <th>EMP Code</th>
                             <th>Salary</th>
@@ -59,8 +63,9 @@
 <script>
 	$(document).ready(function(){
 		$("#submit").click(function(){
-			$.ajax({
-				url:"insert.php",
+            if($("#id").val()){
+                $.ajax({
+				url:"update.php",
 				type:"post",
 				data:$("#frm").serialize(),
 				success:function(d)
@@ -69,6 +74,20 @@
 					$("#frm")[0].reset();
 				}
 				});
+            }else{
+			$.ajax({
+				url:"insert.php",
+				type:"post",
+				data:$("#frm").serialize(),
+				success:function(d)
+				{
+					// alert(d);
+                    $("#id").val(d);
+                    onFormSubmit();
+					$("#frm")[0].reset();
+				}
+				});
+            }
 		});
 	});
 	

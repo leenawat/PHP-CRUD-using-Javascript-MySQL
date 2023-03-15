@@ -15,6 +15,7 @@
 		while($row = $result->fetch_assoc()) {
 			?>
 			<tr>
+				<td><?php echo $row["id"]; ?></td>
 				<td><?php echo $row["fullName"]; ?></td>
 				<td><?php echo $row["empCode"]; ?></td>
 				<td><?php echo $row["salary"]; ?></td>

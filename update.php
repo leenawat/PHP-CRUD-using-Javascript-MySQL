@@ -8,23 +8,25 @@
 	{
 		echo "Database Not Started";
 	}
+
+	
+	$stmt = $con->prepare("UPDATE crudapp SET fullName=?, empCode=?, salary=?, city=? WHERE id=?");
+	$stmt->bind_param('ssssd', $fullName, $empCode, $salary, $city, $id );
+
 	$fullName = $_POST["fullName"];
 	$empCode = $_POST["empCode"];
 	$salary = $_POST["salary"];
 	$city = $_POST["city"];
-	
-	$sql = "INSERT INTO crudapp (fullName,empCode,salary,city) VALUES 
-			('$fullName','$empCode','$salary','$city')";
+	$id = $_POST["id"];
+
 	// echo $sql;
-	if(!mysqli_query($con,$sql))
+	if(! $stmt->execute())
 	{
-		echo "Not Inserted";
+		echo "Not Updated";
 	}
 	else
 	{
-		// echo "Inserted";
-		$id = 	mysqli_insert_id($con);
-		echo $id;
+		echo "Updated";
 	}
 	
 	// header("refresh:2; url="index.php");
