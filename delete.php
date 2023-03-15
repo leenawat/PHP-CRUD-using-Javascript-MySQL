@@ -1,13 +1,19 @@
 <?php
-	$mysqli = new mysqli("127.0.0.1","root"," ","crud");
-	if ($mysqli -> connect_errno) 
+	$con = mysqli_connect('127.0.0.1','root','');
+	if(!$con)
 	{
 		echo "Not connected to server";
 	}
-	$id = $_REQUEST["id"];
+	if(!mysqli_select_db($con, 'crud'))
+	{
+		echo "Database Not Started";
+	}
+	
+	 $stmt = $con->prepare("DELETE FROM crudapp WHERE id=?");
+	 $stmt->bind_param('d', $id);
+	 $id = $_REQUEST["id"];
 
-	 $sql = "DELETE FROM crudapp WHERE id =".$id."";
-	 $result=$mysqli -> query($sql);
+	 $result=$stmt->execute();
 	
 	if($result)
 	 {

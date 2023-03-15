@@ -92,17 +92,7 @@
 	});
 	
 	$(document).ready(function(){
-		$.ajax({
-			url:"result.php",
-			success:function(data)
-			{
-				$('.dy_data').html(data);
-			}
-		});
-	});
-	
-	$(document).ready(function(){
-		
+		getResult();
 	});
 	
 	function ondeleterecord(id){
@@ -112,6 +102,7 @@
 			data:{id:id},
 			success: function(data){
 				alert(data);
+                getResult();
 			}
 		});
 	}

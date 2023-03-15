@@ -45,6 +45,16 @@ function insertNewRecord(data) {
                        <a onClick="onDelete(this)">Delete</a>`;
 }
 
+function getResult() {
+    $.ajax({
+			url:"result.php",
+			success:function(data)
+			{
+				$('.dy_data').html(data);
+			}
+		});
+}
+
 function resetForm() {
     document.getElementById("fullName").value = "";
     document.getElementById("empCode").value = "";

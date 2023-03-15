@@ -8,15 +8,17 @@
 	{
 		echo "Database Not Started";
 	}
+	
+
+	$stmt = $con->prepare("INSERT INTO crudapp (fullName,empCode,salary,city) VALUES (?, ?, ?, ?)");
+	$stmt->bind_param('ssss', $fullName, $empCode, $salary, $city);
+
 	$fullName = $_POST["fullName"];
 	$empCode = $_POST["empCode"];
 	$salary = $_POST["salary"];
 	$city = $_POST["city"];
-	
-	$sql = "INSERT INTO crudapp (fullName,empCode,salary,city) VALUES 
-			('$fullName','$empCode','$salary','$city')";
-	// echo $sql;
-	if(!mysqli_query($con,$sql))
+
+	if(!$stmt->execute())
 	{
 		echo "Not Inserted";
 	}
