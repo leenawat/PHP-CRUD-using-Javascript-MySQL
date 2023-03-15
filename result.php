@@ -1,5 +1,5 @@
 <?php 
-	$con = mysqli_connect('localhost','root','');
+	$con = mysqli_connect('127.0.0.1','root','');
 	if(!$con)
 	{
 		echo "Not connected to server";
@@ -20,7 +20,7 @@
 				<td><?php echo $row["salary"]; ?></td>
 				<td><?php echo $row["city"]; ?></td>
 				<td>
-					<a onclick="onEdit()">Edit</a>
+					<a onclick="onEdit(this)">Edit</a>
 					<a onclick="ondeleterecord('<?php echo $row["id"]; ?>')">Delete</a>
 				</td>
 			</tr>

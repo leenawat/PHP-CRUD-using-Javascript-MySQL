@@ -55,8 +55,6 @@
     </table>
     <script src="script.js"></script>
 </body>
-<p onclick="test()">asdkfask</p>
-
 
 <script>
 	$(document).ready(function(){

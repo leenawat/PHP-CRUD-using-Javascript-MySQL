@@ -1,5 +1,5 @@
 <?php
-	$con = mysqli_connect('localhost','root','');
+	$con = mysqli_connect('127.0.0.1','root','');
 	if(!$con)
 	{
 		echo "Not connected to server";
@@ -14,8 +14,8 @@
 	$city = $_POST["city"];
 	
 	$sql = "INSERT INTO crudapp (fullName,empCode,salary,city) VALUES 
-			('$fullName','$empCode',$salary,'$city')";
-	
+			('$fullName','$empCode','$salary','$city')";
+	// echo $sql;
 	if(!mysqli_query($con,$sql))
 	{
 		echo "Not Inserted";

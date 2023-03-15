@@ -1,5 +1,5 @@
 <?php
-	$mysqli = new mysqli("localhost","root"," ","crud");
+	$mysqli = new mysqli("127.0.0.1","root"," ","crud");
 	if ($mysqli -> connect_errno) 
 	{
 		echo "Not connected to server";
